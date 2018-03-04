@@ -46,6 +46,6 @@ class SentencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sentence_params
-      params.require(:sentence).permit(:active)
+      params.require(:sentence).permit(:active, :game_id, :step_id)
     end
 end
