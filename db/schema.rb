@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304160548) do
+ActiveRecord::Schema.define(version: 20180304161841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,11 @@ ActiveRecord::Schema.define(version: 20180304160548) do
     t.boolean "redacted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sentence_id"
+    t.index ["sentence_id"], name: "index_words_on_sentence_id"
   end
 
   add_foreign_key "examples", "users"
   add_foreign_key "sentences", "games"
+  add_foreign_key "words", "sentences"
 end
