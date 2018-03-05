@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305224910) do
+ActiveRecord::Schema.define(version: 20180305231032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,33 @@ ActiveRecord::Schema.define(version: 20180305224910) do
     t.integer "wisdom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seededsentences", force: :cascade do |t|
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seededsteps", force: :cascade do |t|
+    t.integer "redact", default: [], array: true
+    t.integer "sentenceindex"
+    t.integer "hopemodifier"
+    t.integer "wisdommodifier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "seededword_id"
+    t.index ["seededword_id"], name: "index_seededsteps_on_seededword_id"
+  end
+
+  create_table "seededwords", force: :cascade do |t|
+    t.string "text"
+    t.boolean "clickable"
+    t.boolean "redacted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "seededsentence_id"
+    t.index ["seededsentence_id"], name: "index_seededwords_on_seededsentence_id"
   end
 
   create_table "sentences", force: :cascade do |t|
@@ -70,6 +97,8 @@ ActiveRecord::Schema.define(version: 20180305224910) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "seededsteps", "seededwords"
+  add_foreign_key "seededwords", "seededsentences"
   add_foreign_key "sentences", "games"
   add_foreign_key "steps", "words"
   add_foreign_key "words", "sentences"

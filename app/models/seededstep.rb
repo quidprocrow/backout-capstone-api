@@ -1,0 +1,2 @@
+class Seededstep < ApplicationRecord
+end

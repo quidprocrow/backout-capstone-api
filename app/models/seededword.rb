@@ -1,0 +1,2 @@
+class Seededword < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Seededsentence < ApplicationRecord
+end
