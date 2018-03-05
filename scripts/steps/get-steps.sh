@@ -1,8 +1,7 @@
 #!/bin/bash
 
-curl "http://localhost:4741/words" \
+curl "http://localhost:4741/steps" \
   --include \
   --request GET \
-  --header "Authorization: Token token=${TOKEN}"
 
 echo
