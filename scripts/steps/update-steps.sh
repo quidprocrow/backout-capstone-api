@@ -15,8 +15,7 @@ curl "http://localhost:4741/steps/${ID}" \
       "redact": "'"${ARR}"'",
       "word_id": "'"${WORD}"'",
       "hopemodifier": "'"${HMOD}"'",
-      "wisdommodifier": "'"${WMOD}"'",
-      "sentence": "'"${SEN}"'"
+      "wisdommodifier": "'"${WMOD}"'"
     }
   }'
 

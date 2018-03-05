@@ -1,5 +1,5 @@
 #!/bin/bash
-ID="1"
+ID="4"
 
 curl "http://localhost:4741/steps/${ID}" \
   --include \

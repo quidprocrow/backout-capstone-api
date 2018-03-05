@@ -1,8 +1,8 @@
 #!/bin/bash
 BOOL="true"
 GAME="1"
-ID="1"
-STEPID="3"
+ID="3"
+STEPID="4"
 
 curl "http://localhost:4741/sentences/${ID}" \
   --include \
@@ -11,8 +11,7 @@ curl "http://localhost:4741/sentences/${ID}" \
   --data '{
     "sentence": {
       "active": "'"${BOOL}"'",
-      "game_id": "'"${GAME}"'",
-      "step_id": "'"${STEPID}"'"
+      "game_id": "'"${GAME}"'"
     }
   }'
 
