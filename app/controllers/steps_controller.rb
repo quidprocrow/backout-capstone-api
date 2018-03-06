@@ -1,4 +1,4 @@
-class StepsController < ApplicationController
+class StepsController < ProtectedController
   before_action :set_step, only: [:show, :update, :destroy]
 
   # GET /steps

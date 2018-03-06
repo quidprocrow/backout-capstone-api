@@ -1,4 +1,4 @@
-class SentencesController < ApplicationController
+class SentencesController < ProtectedController
   before_action :set_sentence, only: [:show, :update, :destroy]
 
   # GET /sentences
