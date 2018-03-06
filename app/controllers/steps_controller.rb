@@ -3,7 +3,7 @@ class StepsController < ProtectedController
 
   # GET /steps
   def index
-    @steps = Step.all
+    @steps = current_user.steps
 
     render json: @steps
   end
@@ -41,7 +41,7 @@ class StepsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step
-      @step = Step.find(params[:id])
+      @step = current_user.steps.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

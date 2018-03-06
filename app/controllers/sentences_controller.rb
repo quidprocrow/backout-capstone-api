@@ -3,7 +3,7 @@ class SentencesController < ProtectedController
 
   # GET /sentences
   def index
-    @sentences = Sentence.all
+    @sentences = current_user.setences
 
     render json: @sentences
   end
@@ -41,7 +41,7 @@ class SentencesController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sentence
-      @sentence = Sentence.find(params[:id])
+      @sentence = current_user.sentences.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
