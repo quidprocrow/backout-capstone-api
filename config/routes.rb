@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :seededsteps
-  resources :seededwords
-  resources :seededsentences
+  resources :seededsteps, only: %i[index show]
+  resources :seededwords, only: %i[index show]
+  resources :seededsentences, only: %i[index show]
   resources :steps
   resources :words
   resources :sentences
