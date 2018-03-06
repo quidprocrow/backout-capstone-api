@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305231032) do
+ActiveRecord::Schema.define(version: 20180306004806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20180305231032) do
     t.integer "wisdom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "seededsentences", force: :cascade do |t|
@@ -62,7 +64,9 @@ ActiveRecord::Schema.define(version: 20180305231032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "game_id"
+    t.bigint "user_id"
     t.index ["game_id"], name: "index_sentences_on_game_id"
+    t.index ["user_id"], name: "index_sentences_on_user_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -73,6 +77,8 @@ ActiveRecord::Schema.define(version: 20180305231032) do
     t.integer "hopemodifier"
     t.integer "wisdommodifier"
     t.integer "sentenceindex"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_steps_on_user_id"
     t.index ["word_id"], name: "index_steps_on_word_id"
   end
 
@@ -93,13 +99,19 @@ ActiveRecord::Schema.define(version: 20180305231032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sentence_id"
+    t.bigint "user_id"
     t.index ["sentence_id"], name: "index_words_on_sentence_id"
+    t.index ["user_id"], name: "index_words_on_user_id"
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "games", "users"
   add_foreign_key "seededsteps", "seededwords"
   add_foreign_key "seededwords", "seededsentences"
   add_foreign_key "sentences", "games"
+  add_foreign_key "sentences", "users"
+  add_foreign_key "steps", "users"
   add_foreign_key "steps", "words"
   add_foreign_key "words", "sentences"
+  add_foreign_key "words", "users"
 end
