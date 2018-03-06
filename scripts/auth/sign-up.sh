@@ -1,4 +1,6 @@
 #!/bin/bash
+EMAIL="hope"
+PASSWORD="hope"
 
 curl "http://localhost:4741/sign-up" \
   --include \
