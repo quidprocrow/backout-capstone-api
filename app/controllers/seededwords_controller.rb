@@ -1,4 +1,4 @@
-class SeededwordsController < ApplicationController
+class SeededwordsController < OpenReadController
   before_action :set_seededword, only: [:show, :update, :destroy]
 
   # GET /seededwords

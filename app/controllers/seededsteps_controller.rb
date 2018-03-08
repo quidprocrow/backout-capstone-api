@@ -1,4 +1,4 @@
-class SeededstepsController < ApplicationController
+class SeededstepsController < OpenReadController
   before_action :set_seededstep, only: [:show, :update, :destroy]
 
   # GET /seededsteps
