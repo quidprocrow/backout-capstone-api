@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :seededsteps, only: %i[index show]
   resources :seededwords, only: %i[index show]
   resources :seededsentences, only: %i[index show]
+  resources :steps
   resources :words
   resources :sentences
   resources :games

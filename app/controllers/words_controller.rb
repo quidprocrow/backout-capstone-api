@@ -46,6 +46,6 @@ class WordsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def word_params
-      params.require(:word).permit(:text, :clickable, :redacted, :sentence_id, :user_id, :seedid, :seedstep)
+      params.require(:word).permit(:text, :clickable, :redacted, :sentence_id, :user_id, :seedid)
     end
 end
