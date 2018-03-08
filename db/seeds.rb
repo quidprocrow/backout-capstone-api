@@ -2,6 +2,8 @@
 sentence_list = [
   [true],
   [false],
+  [false],
+  [false],
   [false]
 ]
 sentence_list.each do |bool|
@@ -11,12 +13,15 @@ end
 word_collection = [
   "This is it: the end. You were wrong.".split,
   "Not the situation, per se, or your response to it, but rather the figure in the dark, bent over Bertram's body, with a book.".split,
-   "It's not wrong that Bertram should die; it's wrong that you could be the one to do it.".split
+   "It's not wrong that Bertram should die; it's wrong that you could be the one to do it.".split,
+   "But then, I suppose you should have expected as much.".split,
+   "One would think the special thing about magical things -- or life -- was the possibility of true recreation.".split
  ]
 
 word_collection.each do |collection|
   p 'Going!'
   collection.each do |word|
+    p word
     temp = {
       text: word,
       clickable: false,
@@ -35,6 +40,7 @@ clickable_words = {
   #figure
   28 => { clickable: true },
   #bertram
+  38 => { clickable: true },
 }
 Seededword.update(clickable_words.keys, clickable_words.values)
 
@@ -48,7 +54,7 @@ step_collection = [
   },
   {
     redact: [2],
-    sentenceindex: 0,
+    sentenceindex: 4,
     hopemodifier: 0,
     wisdommodifier: 0,
     seededword_id: 6
@@ -62,7 +68,7 @@ step_collection = [
   },
   {
     redact: [19, 20, 21],
-    sentenceindex: 4,
+    sentenceindex: 5,
     hopemodifier: 0,
     wisdommodifier: 5,
     seededword_id: 22
