@@ -70,17 +70,6 @@ ActiveRecord::Schema.define(version: 20180308012612) do
     t.index ["user_id"], name: "index_sentences_on_user_id"
   end
 
-  create_table "steps", force: :cascade do |t|
-    t.integer "redact", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "hopemodifier"
-    t.integer "wisdommodifier"
-    t.integer "sentenceindex"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_steps_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "token", null: false
@@ -111,7 +100,6 @@ ActiveRecord::Schema.define(version: 20180308012612) do
   add_foreign_key "seededwords", "seededsentences"
   add_foreign_key "sentences", "games"
   add_foreign_key "sentences", "users"
-  add_foreign_key "steps", "users"
   add_foreign_key "words", "sentences"
   add_foreign_key "words", "users"
 end
