@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307211553) do
+ActiveRecord::Schema.define(version: 20180308012612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,13 +74,11 @@ ActiveRecord::Schema.define(version: 20180307211553) do
     t.integer "redact", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "word_id"
     t.integer "hopemodifier"
     t.integer "wisdommodifier"
     t.integer "sentenceindex"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_steps_on_user_id"
-    t.index ["word_id"], name: "index_steps_on_word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180307211553) do
     t.bigint "sentence_id"
     t.bigint "user_id"
     t.integer "seedid"
+    t.integer "seedstep"
     t.index ["sentence_id"], name: "index_words_on_sentence_id"
     t.index ["user_id"], name: "index_words_on_user_id"
   end
@@ -113,7 +112,6 @@ ActiveRecord::Schema.define(version: 20180307211553) do
   add_foreign_key "sentences", "games"
   add_foreign_key "sentences", "users"
   add_foreign_key "steps", "users"
-  add_foreign_key "steps", "words"
   add_foreign_key "words", "sentences"
   add_foreign_key "words", "users"
 end
