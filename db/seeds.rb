@@ -4,6 +4,7 @@ sentence_list = [
   [false],
   [false],
   [false],
+  [false],
   [false]
 ]
 sentence_list.each do |bool|
@@ -15,7 +16,8 @@ word_collection = [
   "Not the situation, per se, or your response to it, but rather the figure in the dark, bent over Bertram's body, with a book.".split,
    "It's not wrong that Bertram should die; it's wrong that you could be the one to do it.".split,
    "But then, I suppose you should have expected as much.".split,
-   "One would think the special thing about magical things -- or life -- was the possibility of true recreation.".split
+   "One would think the special thing about magical things -- or life -- was the possibility of true recreation.".split,
+   ", surely. Bertram who used to steal bread and laugh, so that the baker laughed, also, and left her bread conspicuously close to the window's ledge.".split
  ]
 
 word_collection.each do |collection|
@@ -40,37 +42,37 @@ clickable_words = {
   #figure
   28 => { clickable: true },
   #bertram
-  38 => { clickable: true },
+  38 => { clickable: false },
 }
 Seededword.update(clickable_words.keys, clickable_words.values)
 
 step_collection = [
   {
-    redact: [2, 3, 4, 5, 6],
+    redact: [3, 4, 5, 6, 7],
     sentenceindex: 2,
-    hopemodifier: -5,
-    wisdommodifier: 5,
+    hopemodifier: -10,
+    wisdommodifier: 10,
     seededword_id: 8
   },
   {
-    redact: [2],
+    redact: [0],
     sentenceindex: 4,
     hopemodifier: 0,
     wisdommodifier: 0,
     seededword_id: 6
   },
   {
-    redact: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 21, 22, 23],
-    sentenceindex: 3,
-    hopemodifier: 0,
-    wisdommodifier: 5,
+    redact: [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32],
+    sentenceindex: 6,
+    hopemodifier: -20,
+    wisdommodifier: -25,
     seededword_id: 28,
   },
   {
-    redact: [19, 20, 21],
+    redact: [ 10, 11, 12, 13, 14],
     sentenceindex: 5,
-    hopemodifier: 0,
-    wisdommodifier: 5,
+    hopemodifier: 30,
+    wisdommodifier: 15,
     seededword_id: 22
   }
 ]

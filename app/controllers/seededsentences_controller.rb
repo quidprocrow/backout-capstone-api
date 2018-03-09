@@ -1,4 +1,4 @@
-class SeededsentencesController < OpenReadController
+class SeededsentencesController < ProtectedController
   before_action :set_seededsentence, only: [:show, :update, :destroy]
 
   # GET /seededsentences
