@@ -1,7 +1,7 @@
 # backOUT
 backOut is a story game, inspired by black out poetry and the choose your own adventure, about emphasis and what redaction means. The protagonist is a young woman who has made a mistake and hopes to correct it, magically; to play, choose from the available terms what she should be focusing on.
 
-[! check it out](https://preview.ibb.co/bUBjTS/Screenshot_2018_03_08_20_39_38.png)
+![check it out](https://preview.ibb.co/bUBjTS/Screenshot_2018_03_08_20_39_38.png)
 
 ## Related
 - [Deployed API](https://tranquil-brook-35365.herokuapp.com)
