@@ -1,352 +1,225 @@
-Rails[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# backOUT
+backOut is a story game, inspired by black out poetry and the choose your own adventure, about emphasis and what redaction means. The protagonist is a young woman who has made a mistake and hopes to correct it, magically; to play, choose from the available terms what she should be focusing on.
 
-# rails-api-template
+[! check it out](https://preview.ibb.co/bUBjTS/Screenshot_2018_03_08_20_39_38.png)
 
-A template for starting projects with `rails-api`. Includes authentication.
+## Related
+- [Deployed API](https://tranquil-brook-35365.herokuapp.com)
+- [Deployed Client Site](https://quidprocrow.github.io/backout-capstone/)
+- [CLient Repository](https://github.com/quidprocrow/backout-capstone)
+- [API Repository](https://github.com/quidprocrow/backout-capstone-api)
 
-At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
+## Technologies used
+- JS
+- Ruby on Rails
+- AJAX
+- PostGresSQL
 
-## Prerequisites
+## Planning process
+I planned to write a choose your own adventure, where particular sentences would be displayed as a result of a players selecting a certain clickable word -- and words would be redacted on the basis of that same choice, with the game's hope and wisdom stats reflecting consequences. To do this, I thought I needed to have sentences that owned words, with words having keys for their clickability and whether or not they were redacted, as well as a link to the next step.
 
--   [rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)
 
-## Dependencies
+## Future Improvements
+I have not reached what I would consider the core functionality of the application: the ability to see an evolving story. At present, I believe I was a bit foolish in my reliance on the backend to the extent that I did; in order to be able to display redacted words in a story, I had users that owned sentences that owned words that owned steps, with the 'story' living in seeded equivalent tables. This made for an incredible burden on JS promises. I need to streamline the number of requests; I'm considering eliminating the seeded components on the backend and simply having a javasript object representing possible sentences, with a switch conditional directing to the appropriate sentence.
 
-Install with `bundle install`.
 
--   [`rails-api`](https://github.com/rails-api/rails-api)
--   [`rails`](https://github.com/rails/rails)
--   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
--   [`ruby`](https://www.ruby-lang.org/en/)
--   [`postgres`](http://www.postgresql.org)
+## User stories
+As a user, I can create a game.
+As a user, I can update a game by interacting with a game's sentences.
+As a user, I can delete game.
+As a user, I can show / 'load' a saved game.
+As a user, I can see all of the sentences marked as active at once.
+As a user, I can interact with games by clicking on select words.
+As a user, I can see a new sentence as a result of a previous click on a particular word.
+As a user, I cannot click a previous sentence's words.
+As a user, I cannot create sentences.
+As a user, I can view sentences that have been selectively redacted (blacked out).
+As a user, I can view my hope and wisdom.
+As a user, I observe as my hope and wisdom stats change on the basis of choices.
+As a user, I  am notified when the game is over.
+As a user, I can change my password.
+As a user, I can sign out.
+As a user, I can sign in.
+Asa  user, I can sign up.
 
-## Installation
+## ERD
+https://www.lucidchart.com/invitations/accept/e9ef0c1e-0bc6-47b3-ac72-70ab93b7fecd
 
-### Download Template:
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory (`unzip ~/Downloads/rails-api-template-master.zip`)
-1.  Move into the new project and `git init`.
+## WIREFREAMES
+https://ibb.co/dBfdF7
 
-### Customize Template:
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Rename your app module in `config/application.rb` (change
-    `RailsApiTemplate`).
-1.  Rename your project database in `config/database.yml` (change
-    `'rails-api-template'`).
 
-### Setup Environment:
-1.  Install dependencies with `bundle install`.
-1.  `git add` and `git commit` your changes.
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
+## Gratitudes
+- Shaun White wrote a misspelled inspirational message on the classroom white board, and I'm grateful for all of that.
+- Maria Ines, Naida Rosenberger, Sarah Burke, Kostant Stanton, Virginia Donaire, Kate Lindsay, and Rebecca Coras were key components in my mental health in building this.
+- Danny Kirschner and Nate Dunn were both excellent advisers on the structure of the database and the structure of the application.
+- Mike Finneran was of great assistance in tackling serialization issues.
+- Dan Soszynski graciously got me maple syrup upon request (as well as a lint roller!).
 
-### Setup your database:
-    - bin/rails db:drop (if it already exists)
-    - bin/rails db:create
-    - bin/rails db:migrate
-    - bin/rails db:seed
-    - bin/rails db:examples
+## Routes
 
-  Note: Remember to follow the same commands when setting up your deployed database!
-
-### Run your server!
-1. Run the API server with `bin/rails server` or `bundle exec rails server`.
-
-## Structure
-
-This template follows the standard project structure in Rails.
-
-`curl` command scripts are stored in [`scripts`](scripts) with names that
-correspond to API actions.
-
-User authentication is built-in.
-
-## Tasks
-
-Developers should run these often!
-
--   `bin/rails routes` lists the endpoints available in your API.
--   `bin/rails test` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
-
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
-
-## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
-
-### Authentication
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password`     | `users#changepw`  |
-| DELETE | `/sign-out`        | `users#signout`   |
-
-#### POST /sign-up
-
-Request:
-
+### GAMES
+Create
 ```sh
-curl http://localhost:4741/sign-up \
+curl "http://localhost:4741/games" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD}"'"
+    "game": {
+      "hope": "'"${NUM}"'",
+      "wisdom": "'"${NUM}"'",
+      "user_id": "'"${ID}"'"
     }
   }'
-```
+  ```
 
+  Read - Index
+  ```sh
+  curl "http://localhost:4741/games" \
+    --include \
+    --request GET \
+    --header "Authorization: Token token=${TOKEN}" \
+
+  echo
+  ```
+
+  Read - Show
+  ```sh
+  curl "http://localhost:4741/games/${ID}" \
+    --include \
+    --request GET \
+    --header "Authorization: Token token=${TOKEN}" \
+
+  echo
+
+  ```
+
+  Delete
+  ```sh
+  curl "http://localhost:4741/games/${ID}" \
+    --include \
+    --request DELETE \
+    --header "Authorization: Token token=${TOKEN}" \
+
+  echo
+  ```
+## Sentences
+
+Create
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-up.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "ava@bob.com"
-  }
-}
-```
-
-#### POST /sign-in
-
-Request:
-
-```sh
-curl http://localhost:4741/sign-in \
+curl "http://localhost:4741/sentences" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'"
+    "sentence": {
+      "active": "'"${BOOL}"'",
+      "game_id": "'"${GAME}"'",
+      "user_id": "'"${USER}"'"
     }
   }'
+
+echo
 ```
 
+Read - Show
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-in.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "ava@bob.com",
-    "token": "BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f"
-  }
-}
-```
-
-#### PATCH /change-password
-
-Request:
-
-```sh
-curl --include --request PATCH "http://localhost:4741/change-password" \
-  --header "Authorization: Token token=$TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "'"${OLDPW}"'",
-      "new": "'"${NEWPW}"'"
-    }
-  }'
-```
-
-```sh
-OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/change-password.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-#### DELETE /sign-out
-
-Request:
-
-```sh
-curl http://localhost:4741/sign-out \
-  --include \
-  --request DELETE \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/sign-out.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-### Users
-
-| Verb | URI Pattern | Controller#Action |
-|------|-------------|-------------------|
-| GET  | `/users`    | `users#index`     |
-| GET  | `/users/1`  | `users#show`      |
-| PATCH| `/users/1`  | `users#update`    |
-
-#### GET /users
-
-Request:
-
-```sh
-curl http://localhost:4741/users \
+curl "http://localhost:4741/sentences/${ID}" \
   --include \
   --request GET \
-  --header "Authorization: Token token=$TOKEN"
+  --header "Authorization: Token token=${TOKEN}" \
+
+echo
+
 ```
 
+Read - Index
 ```sh
-TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/users.sh
+curl "http://localhost:4741/sentences" \
+  --include \
+  --request GET \
+  --header "Authorization: Token token=${TOKEN}" \
+echo
+
 ```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "users": [
-    {
-      "id": 2,
-      "email": "bob@ava.com"
-    },
-    {
-      "id": 1,
-      "email": "ava@bob.com"
-    }
-  ]
-}
-```
-
-#### GET /users/:id
-
-Request:
-
+Update
 ```sh
-curl --include --request GET http://localhost:4741/users/$ID \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/user.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 2,
-    "email": "bob@ava.com"
-  }
-}
-```
-
-#### PATCH /users/:id
-
-Request:
-
-```sh
-curl "http://localhost:4741/users/${ID}" \
+curl "http://localhost:4741/sentences/${ID}" \
   --include \
   --request PATCH \
-  --header "Authorization: Token token=${TOKEN}" \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "user": {
-      "email": "'"${EMAIL}"'"
+    "sentence": {
+      "active": "'"${BOOL}"'",
+      "game_id": "'"${GAME}"'"
     }
   }'
+
+echo
 ```
 
+Delete
 ```sh
-ID=1 TOKEN="BAhJIiU1NGNlYjRmMjBhM2NkZTZiNzk1MGNiYmZiYWMyY2U4MwY6BkVG--ddb1e16af0e05921aa56d771e4a2f816f2a1d46e"
-EMAIL=mike@m
-sh scripts/users/user-update.sh
+curl "http://localhost:4741/sentences/${ID}" \
+  --include \
+  --request DELETE \
+
+echo
 ```
 
-Response:
+## Words
 
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{"user":{"id":1,"email":"mike@m"}}
-```
-
-### Reset Database without dropping
-
-This is not a task developers should run often, but it is sometimes necessary.
-
-**locally**
-
+Create
 ```sh
-bin/rails db:migrate VERSION=0
-bin/rails db:migrate db:seed db:examples
+curl "http://localhost:4741/words" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
+  --data '{
+    "word": {
+      "text": "'"${TEXT}"'",
+      "clickable": "'"${BOOL}"'",
+      "redacted": "'"${BOOL}"'",
+      "sentence_id": "'"${SEN}"'",
+      "user_id": "'"${USER}"'"
+    }
+  }'
+
+echo
 ```
 
-**heroku**
-
+Read - Show
 ```sh
-heroku run rails db:migrate VERSION=0
-heroku run rails db:migrate db:seed db:examples
+curl "http://localhost:4741/words/${ID}" \
+  --header "Authorization: Token token=${TOKEN}" \
+  --include \
+  --request GET \
+
+echo
 ```
 
-## Additional Resources
-- [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
-- http://guides.rubyonrails.org/api_app.html
-- https://blog.codeship.com/building-a-json-api-with-rails-5/
+Read - Index
+```sh
+curl "http://localhost:4741/words" \
+  --include \
+  --request GET \
+  --header "Authorization: Token token=${TOKEN}" \
 
-## [License](LICENSE)
+echo
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+```
+Delete
+```sh
+curl "http://localhost:4741/words/${ID}" \
+  --include \
+  --request DELETE \
+  --header "Authorization: Token token=${TOKEN}" \
+
+echo
+
+```
