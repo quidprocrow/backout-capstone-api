@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :seededsteps, only: %i[index show]
   resources :seededwords, only: %i[index show]
   resources :seededsentences, only: %i[index show]
-  resources :words
-  resources :sentences
   resources :games
   # RESTful routes
   resources :examples, except: %i[new edit]
