@@ -1,6 +1,4 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :hope, :wisdom, :mnemonic, :words
-  has_many :sentences
-  has_many :words, through: :sentences
+  attributes :id, :hope, :wisdom, :mnemonic, :sentences
   belongs_to :user
 end

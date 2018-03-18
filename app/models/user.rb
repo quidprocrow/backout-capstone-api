@@ -2,8 +2,5 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :examples
   has_many :games, :dependent => :destroy
-  has_many :sentences, :dependent => :destroy
-  has_many :words, :dependent => :destroy
 end
